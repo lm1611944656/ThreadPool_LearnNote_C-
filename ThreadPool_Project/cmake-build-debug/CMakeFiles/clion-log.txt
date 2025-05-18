@@ -1,0 +1,4 @@
+"E:\Tools\Clion\install\CLion 2022.2.5\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=E:/Tools/C_CPP_env/mingw_w64/install/mingw64/bin/mingw32-make.exe -DCMAKE_C_COMPILER=E:/Tools/C_CPP_env/mingw_w64/install/mingw64/bin/gcc.exe -DCMAKE_CXX_COMPILER=E:/Tools/C_CPP_env/mingw_w64/install/mingw64/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" -S D:\workspace\DL_Workpace\ThreadPool_LearnNote_C-\ThreadPool_Project -B D:\workspace\DL_Workpace\ThreadPool_LearnNote_C-\ThreadPool_Project\cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/workspace/DL_Workpace/ThreadPool_LearnNote_C-/ThreadPool_Project/cmake-build-debug
