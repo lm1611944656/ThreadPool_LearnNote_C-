@@ -27,6 +27,7 @@ std::thread& CThreadObj::getThread() {
 }
 
 /**********************END***************************/
+// 线程池中，线程函数函数的数量
 const int TASK_MAX_THRESHOLD = 4;
 
 CThreadPool::CThreadPool()

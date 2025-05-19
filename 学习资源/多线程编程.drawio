@@ -1,4 +1,4 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8" pages="3">
   <diagram name="并发和并行" id="Zzc0QdnHF54bV1MfymoB">
     <mxGraphModel dx="1877" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -228,6 +228,76 @@
         </mxCell>
         <mxCell id="Vjxe_0oO2wVu7SaKX2D6-127" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;&lt;b&gt;并行&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="330" y="810" width="100" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="7q8-uAgqosyDbGGhYYDR" name="线程池">
+    <mxGraphModel dx="1877" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-1" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;1. 创建线程池的原因&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="10" y="130" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="30" y="170" width="560" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-3" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;原因：创建线程和销毁线程是一个很“重”的操作，需要 大量的内核时间。如果服务在执行期间在去创建线程，这样会耽误处理业务；&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="540" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-4" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;因此在服务执行之前就将需要的线程创建并保存好，然后等待业务到来之后，在直接从线程池中分配线程去执行业务。这样可以减少创建线程而占用内核时间。&lt;br&gt;&lt;font color=&quot;#000099&quot;&gt;执行完业务逻辑之后，在将线程放回到线程池中，而不是执行完业务直接销毁线程。&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="510" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-6" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;2. 线程池的模式&lt;/font&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;固定模式&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;增长模式&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry y="450" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="540" width="560" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Xpzfz-bJCE3QQffhiiJ9-8" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;固定模式：线程池中，线程的数量有CPU的核心数量来确定&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry y="560" width="540" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="SjcQksQo9EhkYikcmvTv" name="线程互斥">
+    <mxGraphModel dx="1877" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-13" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="350" width="520" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-6" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;1. 代码片段是否可以在多线程下执行的条件？&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-25" y="140" width="430" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-9" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="190" width="520" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-10" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;1. 如果代码片段存在竞态条件，那么不适合多线程；&lt;/font&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;该代码段也称做为&lt;font color=&quot;#ff0000&quot;&gt;不&lt;/font&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot; color=&quot;#ff3333&quot;&gt;可重入的；&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;2.&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 20px; background-color: initial;&quot;&gt;如果代码片段不存在竞态条件，那么就适合多线程；该代码段也称做为&lt;font color=&quot;#ff3333&quot;&gt;可重入的；&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry y="225" width="490" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-11" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;2. 竞态条件&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="320" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-12" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;1. 代码片段在多线程环境下执行，随着线程的调度顺序不同，&lt;/font&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;而得到不同的运行结果，这就是存在竞态条件；&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;2. 竞态条件称做&lt;font color=&quot;#cc0000&quot;&gt;临界代码段&lt;/font&gt;；&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;3. 临界代码段的代码，需要保证原子操作；&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry y="360" width="570" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-14" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;保证原子操作，需要使用锁&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="565" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-15" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=5;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint y="680" as="sourcePoint" />
+            <mxPoint x="680" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-16" value="&lt;font color=&quot;#ff0000&quot; style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;银行卡内的余额&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="773" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="I5yNZKabXsxCDYP7CTUZ-17" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;我和我的爱人在任意时刻只能只能有一个人进行消费；这就需要原子操作；&lt;br&gt;银行卡内的余额就是共享资源，也就是存在竞态条件，是不可重入的；&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="820" width="680" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
