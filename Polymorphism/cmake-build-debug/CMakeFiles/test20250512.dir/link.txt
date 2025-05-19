@@ -1,0 +1,3 @@
+"E:\Tools\Clion\install\CLion 2022.2.5\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\test20250512.dir/objects.a
+E:\Tools\C_CPP_env\mingw_w64\install\mingw64\bin\ar.exe qc CMakeFiles\test20250512.dir/objects.a @CMakeFiles\test20250512.dir\objects1.rsp
+E:\Tools\C_CPP_env\mingw_w64\install\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\test20250512.dir/objects.a -Wl,--no-whole-archive -o test20250512.exe -Wl,--out-implib,libtest20250512.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\test20250512.dir\linklibs.rsp
